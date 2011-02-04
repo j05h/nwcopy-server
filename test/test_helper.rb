@@ -17,10 +17,25 @@ class ActiveSupport::TestCase
   end
 
   def binary_paste
+    return @binary if @binary
     data = File.new(File.join(Rails.root, 'test/fixtures/rails.png')).read
-    paste = Paste.new :content => data, :filename => 'rails.png'
-    paste.save
-    paste
+    @binary = Paste.new :content => data, :filename => 'rails.png', :user => current_user
+    @binary.save
+    @binary
+  end
+
+  def text_paste
+    return @text if @text
+    @text = Paste.new :content => "this is some text", :user => current_user
+    @text.save
+    @text
+  end
+
+  def current_user
+    return @user if @user
+    @user = User.new :github_account => 'foo'
+    @user.save
+    @user
   end
 
   def fixture_file filename, content_type
