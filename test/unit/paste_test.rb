@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PasteTest < ActiveRecord::TestCase
   test 'initialize' do
-    paste = Paste.new 'this is some data'
+    paste = Paste.new :content => 'this is some data'
     paste.save
     assert paste.guid
     assert paste.content

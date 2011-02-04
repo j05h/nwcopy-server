@@ -17,9 +17,20 @@ class ActiveSupport::TestCase
   end
 
   def binary_paste
-    data = File.new(File.join(Rails.root, 'public/images/rails.png')).read
-    paste = Paste.new data
+    data = File.new(File.join(Rails.root, 'test/fixtures/rails.png')).read
+    paste = Paste.new :content => data, :filename => 'rails.png'
     paste.save
     paste
   end
+
+  def fixture_file filename, content_type
+    file = fixture_file_upload(filename, content_type)
+
+    def file.read
+      File.open(self.local_path).read
+    end
+
+    file
+  end
+
 end
