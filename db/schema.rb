@@ -10,7 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110204014423) do
+ActiveRecord::Schema.define(:version => 20110204035316) do
+
+  create_table "pastes", :force => true do |t|
+    t.string   "guid",                          :null => false
+    t.string   "filename"
+    t.binary   "content",    :limit => 2097152
+    t.integer  "user_id",                       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pastes", ["guid"], :name => "index_pastes_on_guid"
+  add_index "pastes", ["user_id"], :name => "index_pastes_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "github_account"
