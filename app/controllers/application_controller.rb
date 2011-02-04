@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def client
-    OAuth2::Client.new('921a9ebc5e668687cb47', 'd91661dc7e368d16cca5f77366bf8d4c9130795d',
+    OAuth2::Client.new(GITHUBACCESS, GITHUBSECRET,
                       :site             => 'https://github.com',
                       :authorize_url    => 'https://github.com/login/oauth/authorize',
                       :access_token_url => 'https://github.com/login/oauth/access_token',

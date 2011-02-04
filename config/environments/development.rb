@@ -22,5 +22,7 @@ NwcopyServer::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  GITHUBACCESS = '921a9ebc5e668687cb47'
+  GITHUBSECRET = 'd91661dc7e368d16cca5f77366bf8d4c9130795d'
 end
 

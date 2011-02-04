@@ -46,4 +46,6 @@ NwcopyServer::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  GITHUBACCESS = '701aa6c7863e2f650be2'
+  GITHUBSECRET = '2fc16398de8fe58899089759394ecdb899874a3f'
 end
