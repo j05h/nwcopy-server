@@ -1,1 +1,11 @@
-<p><%= me.github_account %></p>
+<p>Hi <%= me.github_account %>!</p>
+
+<p>Now you're ready to start copy and pasting. Its pretty simple really. You now have a username and access token with us that allows you to copy and paste content.</p>
+
+<h2>Instructions:</h2>
+<h4>To copy data:</h4>
+<p><em>curl --user <%= me.credentials %> --form data=@path/to/a/file http://<%=request.host_with_port%>/copy</em></p>
+
+<h4>To paste data:</h4>
+<p><em>curl --user <%= me.credentials %> http://<%=request.host_with_port%>/paste</em></p>
+

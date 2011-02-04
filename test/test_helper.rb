@@ -16,16 +16,16 @@ class ActiveSupport::TestCase
     response
   end
 
-  def binary_paste
-    return @binary if @binary
+  def binary_paste force = false
+    return @binary if @binary && !force
     data = File.new(File.join(Rails.root, 'test/fixtures/rails.png')).read
     @binary = Paste.new :content => data, :filename => 'rails.png', :user => current_user
     @binary.save
     @binary
   end
 
-  def text_paste
-    return @text if @text
+  def text_paste force = false
+    return @text if @text && !force
     @text = Paste.new :content => "this is some text", :user => current_user
     @text.save
     @text
