@@ -3,7 +3,7 @@ class CreatePastes < ActiveRecord::Migration
     create_table :pastes do |t|
       t.string  :guid,    :null  => false
       t.string  :filename
-      t.binary  :content, :limit => 2.megabytes
+      t.binary  :content
       t.integer :user_id, :null  => false
 
       t.timestamps
