@@ -3,7 +3,7 @@ require 'test_helper'
 class PastesControllerTest < ActionController::TestCase
   test 'takes a copy' do
     assert_difference 'Paste.count' do
-      raw_post :create, {}, "this is the body i'm sending"
+      raw_post :create, {"data" => "this is the body i'm sending"}
     end
     assert_match /http:\/\/test.host\/pastes\/\w*/, response.body
   end
