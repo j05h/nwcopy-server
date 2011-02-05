@@ -35,12 +35,12 @@ a:hover {
   border: 3px solid #aaa;
   border-top: none;
   padding: 25px;
-  width: 500px;
+  width: 550px;
 }
 
 #sidebar {
   float: right;
-  width: 175px;
+  width: 125px;
 }
 
 #footer {

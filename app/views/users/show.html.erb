@@ -1,35 +1,54 @@
 <p>Hi <%= me.github_account %>!</p>
 
-<p>Now you're ready to start copy and pasting. Its pretty simple really. Use your credentials (below) to copy and paste data between computers.</p>
+<p>Now you're ready to start copy and pasting. Its pretty simple really.
+Use your <a href="#" id="creds">credentials</a> to copy and paste data between computers.</p>
 
-<h2>Instructions:</h2>
-
-<h3>First</h3>
-<p><em>export NWCOPY_CREDS=<%=me.credentials%></em></p>
-
-<h3><em><a id='curl_open' href="#">curl</a></em></h3>
-<div id='curl' style='display:none'>
-  <h4>To copy data:</h4>
-  <p><em>curl http://<%=request.host_with_port%>/copy --user $NWCOPY_CREDS --form data=@file</em></p>
-
-  <h4>To paste data:</h4>
-  <p><em>curl http://<%=request.host_with_port%>/paste --user $NWCOPY_CREDS</em></p>
+<h2><a id="pastes_open" href="#">Your Pastes</a></h2>
+<div id="pastes" <%= h "style='display:none'" if me.pastes.empty? %>>
+  <ul>
+  <% me.pastes[0..4].each do |paste| %>
+    <li><%= link_to (paste.filename || paste.guid), paste_url(paste.guid) %></li>
+  <% end %>
 </div>
 
-<h3><em><a id='ruby_open' href="#">ruby</a></em></h3>
-<div id='ruby' style='display:none'>
-  <h4>To copy data:</h4>
-  <p><em>ruby</em></p>
+<h2><a id="instructions_open" href="#">Instructions</a></h2>
+<div id="instructions" <%= h "style='display:none'" unless me.pastes.empty? %>>
 
-  <h4>To paste data:</h4>
-  <p><em>ruby</em></p>
-</div>
+  <h3>First</h3>
+  <h4>Export your credentials</h4>
+  <p><em>export NWCOPY_CREDS=<%=me.credentials%></em></p>
 
-<h3><em><a id='bash_open' href="#">bash</a></em></h3>
-<div id='bash' style='display:none'>
-  <h4>To copy data:</h4>
-  <p><em>bash</em></p>
+  <h3><em><a id='curl_open' href="#">curl</a></em></h3>
+  <div id='curl' style='display:none' >
+    <h4>To copy data:</h4>
+    <p><em>curl http://<%=request.host_with_port%>/copy --user $NWCOPY_CREDS --form data=@file</em></p>
 
-  <h4>To paste data:</h4>
-  <p><em>bash</em></p>
+    <h4>To paste data:</h4>
+    <p><em>curl http://<%=request.host_with_port%>/paste --user $NWCOPY_CREDS</em></p>
+  </div>
+
+  <h3><em><a id='ruby_open' href="#">ruby</a></em></h3>
+  <div id='ruby' style='display:none'>
+    <h4>Installation:</h4>
+    <p><em>gem install <a href="http://github.com/j05h/nwcopy">nwcopy</a></em></p>
+    <h4>To copy data:</h4>
+    <p><em>nwcopy path/to/file</em></p>
+    <p><em>echo 'something to copy ' | nwcopy</em></p>
+
+    <h4>To paste data:</h4>
+    <p><em>nwpaste</em></p>
+    <h4>Note:</h4>
+    <p>If you pasted a file, nwpaste will write that file to the originally supplied filename.
+      Otherwise, it prints to STDOUT.
+    </p>
+  </div>
+
+  <h3><em><a id='bash_open' href="#">bash</a></em></h3>
+  <div id='bash' style='display:none'>
+    <h4>To copy data:</h4>
+    <p><em>coming soon!</em></p>
+
+    <h4>To paste data:</h4>
+    <p><em>coming soon!</em></p>
+  </div>
 </div>
