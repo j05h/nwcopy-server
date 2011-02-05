@@ -29,7 +29,7 @@ class PastesControllerTest < ActionController::TestCase
     get :show, {:id => paste.guid}
 
     assert_equal paste.content, response.body
-    assert_equal paste.guid, response.headers['Location']
+    assert_nil response.headers['Location']
   end
 
   test 'pastes binary data' do

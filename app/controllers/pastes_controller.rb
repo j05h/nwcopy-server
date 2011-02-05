@@ -17,7 +17,7 @@ class PastesController < ApplicationController
               @user.pastes.first
             end
 
-    headers['Location'] = paste.filename || paste.guid
+    headers['Location'] = paste.filename if paste.filename
     send_data paste.content
   end
 
