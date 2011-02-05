@@ -6,7 +6,12 @@ class PastesController < ApplicationController
   def create
     content, filename = read_data
     paste = Paste.new :content => content, :filename => filename, :user => @user
-    paste.save
+
+    if previous = @user.pastes.find_by_guid(paste.guid)
+      previous.touch
+    else
+      paste.save
+    end
     render :text => "http://#{request.host_with_port}/pastes/#{paste.guid}", :status => 201
   end
 

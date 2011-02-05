@@ -30,6 +30,7 @@ class PasteTest < ActiveRecord::TestCase
   end
 
   test 'updates timestamp when pasting the same thing again' do
+    skip 'it works in testing, but not on the server.  not sure why. trying in controller'
     paste = nil
     assert_difference 'Paste.count' do
       paste = text_paste
