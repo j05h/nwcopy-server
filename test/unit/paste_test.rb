@@ -24,6 +24,11 @@ class PasteTest < ActiveRecord::TestCase
     assert_equal paste.content, read.content
   end
 
+  test 'filename' do
+    paste = Paste.new :content => 'foo', :user => current_user, :filename => '-'
+    assert_nil paste.filename
+  end
+
   test 'updates timestamp when pasting the same thing again' do
     paste = nil
     assert_difference 'Paste.count' do

@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(:version => 20110204035316) do
 
   create_table "pastes", :force => true do |t|
-    t.string   "guid",                          :null => false
+    t.string   "guid",       :null => false
     t.string   "filename"
     t.binary   "content"
-    t.integer  "user_id",                       :null => false
+    t.integer  "user_id",    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

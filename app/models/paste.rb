@@ -9,9 +9,11 @@ class Paste < ActiveRecord::Base
   belongs_to :user
 
   def initialize params
-    data = params[:content]
-    digest = Digest::SHA1.hexdigest data
-    super :guid => digest, :content => data, :user_id => params[:user].id, :filename => params[:filename]
+    data     = params[:content]
+    digest   = Digest::SHA1.hexdigest data
+    filename = params[:filename].match(/-/) ? nil : params[:filename] if params[:filename]
+
+    super :guid => digest, :content => data, :user_id => params[:user].id, :filename => filename
   end
 
   def check_guid

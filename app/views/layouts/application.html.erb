@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>NwcopyServer</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
+    <title>Me | nwcopy it!</title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag 'jquery-1.5.min', :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
+    <div id="page">
+      <div id="sidebar">
+        <ul id="sidebar-items">
+          <li>
+            <ul class="links">
+              <li><a href="/me">Login</a></li>
+              <li><a href="/index.html">Home</a></li>
+              <li><a href="/about.html">About</a></li>
+              <li><a href="/features.html">Features</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
 
-<%= yield %>
+      <div id="content">
+        <div id="header">
+          <h1>Welcome to nwcopy.it</h1>
+          <h2>Time to copy and paste some stuff!</h2>
+        </div>
 
-</body>
+        <div id="getting-started">
+          <%= yield %>
+        </div>
+      </div>
+
+      <div id="footer">&nbsp;&#169;2011 <a href="http://incrediblylifelike.com/">Incredibly Lifelike</a></div>
+    </div>
+  </body>
 </html>
+
+
+
